@@ -1,0 +1,99 @@
+﻿@model TraditionalRx.Models.Domain.Medicine
+@{
+}
+<form class="w-40" asp-action="Edit" method="post" enctype="multipart/form-data">
+    <h2 class="pb-10">Update Medicine</h2>
+        <input type="hidden" class="input" asp-for="Id">
+    <input type="hidden" class="input" asp-for="MedicineImage">
+
+    <div class="input-container">
+        <label asp-for="ScientificName" class="w-40">Scientific Name</label>
+        <input type="text" class="input" asp-for="ScientificName">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="ScientificName"> </span>
+    </div>
+    <div class="input-container">
+        <label asp-for="CommonName" class="w-40">Common Name</label>
+        <input type="text" class="input" asp-for="CommonName">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="CommonName"> </span>
+    </div>
+    <div class="input-container">
+        <label asp-for="Family" class="w-40">Family</label>
+        <input type="text" class="input" asp-for="Family">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Family"> </span>
+    </div>
+    <div class="input-container">
+        <label asp-for="PartsOfPlant" class="w-40">Parts Of Plant</label>
+        <input type="text" class="input" asp-for="PartsOfPlant">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="PartsOfPlant"> </span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Components" class="w-40">Components</label>
+        <input type="text" class="input" asp-for="Components">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Components"> </span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Compounds" class="w-40">Compounds</label>
+        <input type="text" class="input" asp-for="Compounds">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Compounds"> </span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Methodology" class="w-40">Methodology</label>
+        <input type="text" class="input" asp-for="Methodology">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Methodology"> </span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Reference" class="w-40">Reference</label>
+        <input type="text" class="input" asp-for="Reference">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Reference"> </span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="ImageFile" class="w-40">Image</label>
+        <input type="file" asp-for="ImageFile">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="ImageFile"> </span>
+    </div>
+
+    <div class="input-container">
+        <label asp-for="Categories" class="w-40">Category</label>
+        <select asp-items="Model.MultiCategoryList" class="input" asp-for="Categories" multiple>
+            <option value="">--select--</option>
+        </select>
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Categories"> </span>
+    </div>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert mb-1">
+            @TempData["msg"]
+        </div>
+    }
+
+    <div class="input-container">
+        <button class="btn btn-default" type="submit">Save</button>
+        <a class="btn btn-sec" href="/Medicine/MedicineList">All records</a>
+    </div>
+</form>

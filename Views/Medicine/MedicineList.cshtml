@@ -1,0 +1,60 @@
+﻿@model TraditionalRx.Models.DTO.MedicineListVm
+@{
+
+}
+<html>
+<head>
+    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+</head>
+<body>
+    <div class="tbl-container">
+        <h2>Medicines</h2>
+
+        @(Html
+            .Grid(Model.MedicineList)
+            .Build(columns =>
+            {
+                columns.Add().RenderedAs((model, row) => row + 1).Titled("Index").Css("text-center");
+
+                columns.Add(model => model.ScientificName).Titled("ScientificName");
+                columns.Add(model => model.CommonName).Titled("CommonName");
+                columns.Add(model => model.Family).Titled("Family");
+                columns.Add(model => model.PartsOfPlant).Titled("Parts Of Plant");
+                columns.Add(model => model.Components).Titled("Components");
+                columns.Add(model => model.Compounds).Titled("Compounds");
+                columns.Add(model => model.Methodology).Titled("Methodology");
+                columns.Add(model => model.Reference).Titled("Reference");
+                columns.Add(model => model.CategoryNames).Titled("Category");
+                columns.Add().Encoded(false).RenderedAs((model, row) =>
+                {
+                    if (!string.IsNullOrEmpty(model.MedicineImage))
+                    {
+                        return $"<img src='/Uploads/{model.MedicineImage}' alt='Medicine Image' style='max-width: 100px; max-height: 100px;'/>";
+                    }
+                    else
+                    {
+                        return string.Empty;
+                    }
+                }).Titled("Image");
+                columns.Add().Encoded(false).RenderedAs((model, row) =>
+                {
+                    return $"<a href='/Medicine/Edit?id={model.Id}' class='btn btn-default'><i class='fa fa-edit'></i></a>" +
+                $"<a style='margin-top: 10px;' onclick='return window.confirm(\"Are you sure?\")' href='/Medicine/Delete?id={model.Id}' class='btn btn-danger'><i class='fa fa-trash'></i></a>";
+                }).Titled("Actions");
+
+            }).Filterable()
+            .Pageable()
+            .Sortable()
+            )
+
+        <div class="input-container">
+            <a href="/Medicine/Add" class="btn btn-sec">Back</a>
+        </div>
+    </div>
+
+    <script src="~/js/mvc-grid/mvc-grid.js"></script>
+    <script>
+        document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@model TraditionalRx.Models.Domain.Medicine
+@{
+}
+<style>
+    .heading {
+        font-weight: bold;
+        color: #333;
+    }
+    .content {
+        color: forestgreen; 
+    }
+</style>
+
+<div class="medicine-detail w-80 m-auto">
+    <div class="img-container">
+        <img alt="image" src="/Uploads/@Model.MedicineImage">
+    </div>
+
+    <div class="detail-container">
+        <h4 class="heading">Scientific Name</h4>
+        <span class="content">@Model.ScientificName</span>
+
+        <h4 class="heading">Common Name</h4>
+        <span class="content">@Model.CommonName</span>
+
+        <h4 class="heading">Family</h4>
+        <span class="content">@Model.Family</span>
+
+        <h4 class="heading">Parts Of Plant</h4>
+        <span class="content">@Model.PartsOfPlant</span>
+
+        <h4 class="heading">Category</h4>
+        <span class="content">@Model.CategoryNames</span>
+
+        <h4 class="heading">Components</h4>
+        <span class="content">@Model.Components</span>
+
+        <h4 class="heading">Compounds</h4>
+        <span class="content">@Model.Compounds</span>
+
+        <h4 class="heading">Methodology</h4>
+        <span class="content">@Model.Methodology</span>
+
+        <h4 class="heading">Reference</h4>
+        <span class="content">@Model.Reference</span>
+    </div>
+</div>
+
+<div class="w-80 m-auto">
+    <a href="/Home/Index" class="btn btn-default">Back</a>
+</div>

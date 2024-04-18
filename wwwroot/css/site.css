@@ -1,0 +1,30 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.thicker-border {
+    border-width: 2px;
+}
+
+.border-color{
+    border-color:black
+}
+
+.navbar-nav a {
+    color: white;
+}

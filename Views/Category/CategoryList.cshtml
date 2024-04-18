@@ -1,0 +1,26 @@
+﻿@model IEnumerable<TraditionalRx.Models.Domain.Category>
+@{
+}
+<div class="tbl-container">
+    <h2>Categories</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        @foreach(var item in Model){
+        <tr>
+            <td>@item.CategoryName</td>
+            <td>
+                <a href="/Category/Edit?id=@item.Id" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                    <a onclick="return window.confirm('Are you sure?')" href="/Category/Delete?id=@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+        }
+     
+    </table>
+    <div class="input-container">
+        <a href="/Category/Add" class="btn btn-sec">Back</a>
+    </div>
+</div>

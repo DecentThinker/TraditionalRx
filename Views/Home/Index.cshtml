@@ -1,0 +1,58 @@
+﻿@model TraditionalRx.Models.DTO.MedicineListVm
+@{
+    Layout = "_Layout";
+}
+<style>
+    .heading {
+        font-weight: bold;
+        color: #333; /* Change color as desired */
+    }
+
+    .content {
+        color: forestgreen; /* Change color as desired */
+    }
+</style>
+<section class="search-bar">
+    <form method="get" asp-action="Index">
+        <input type="text" name="term" placeholder="search here">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <a class="btn btn-default" href="/Home/Index">All</a>
+    </form>
+</section>
+<section class="medicines">
+    @foreach(var medicine in Model.MedicineList){
+    <div style="width:fit-content; border" class="medicine-card" onclick="window.location.href='/Home/MedicineDetail?medicineId=@medicine.Id'">
+        <div class="medicine-image">
+                <img src="/Uploads/@medicine.MedicineImage" style="width:250px; height:250px; align-content:center">
+        </div>
+            <div class="medicine-info">
+                <h4 class="heading">Scientific Name</h4>
+                <span class="content">@medicine.ScientificName</span>
+
+                <h4 class="heading">Common Name</h4>
+                <span class="content">@medicine.CommonName</span>
+
+                <h4 class="heading">Family</h4>
+                <span class="content">@medicine.Family</span>
+
+                <h4 class="heading">Parts Of Plant</h4>
+                <span class="content">@medicine.PartsOfPlant</span>
+
+                <h4 class="heading">Category</h4>
+                <span class="content">@medicine.CategoryNames</span>
+            </div>
+    </div>
+    }
+</section>
+
+<div class="pagination">
+    @for(int i=1;i<=Model.TotalPages;i++){
+        if(i==Model.CurrentPage){
+            <a href="/Home/Index?currentPage=@i&term=@Model.Term" class="active">@i</a>
+        }
+        else{
+            <a href="/Home/Index?currentPage=@i&term=@Model.Term">@i</a>
+
+        }
+    }
+</div>
