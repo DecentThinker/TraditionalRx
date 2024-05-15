@@ -17,7 +17,6 @@ namespace TraditionalRx.Models.Domain
         public string? Reference { get; set; }
         public string? MedicineImage { get; set; }  // stores medicine image name with extension (eg, image0001.jpg)
 
-
         [NotMapped]
         public IFormFile? ImageFile { get; set; }
 
